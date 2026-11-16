@@ -426,6 +426,23 @@ details p{padding:0 0 22px;color:var(--muted);font-size:15px}
 .chips input:focus-visible+label{border-color:var(--olive)}
 #form .btn{width:100%;margin-top:6px}
 .privacy{font-size:12.5px;color:var(--muted);text-align:center}
+.field .consent{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;font-weight:400;letter-spacing:0;color:var(--muted);cursor:pointer;margin:2px 0 0}
+.field .consent input{appearance:auto;-webkit-appearance:checkbox;padding:0;border:0;background:none;box-shadow:none;flex-shrink:0;width:20px;height:20px;margin-top:1px;accent-color:var(--green);cursor:pointer}
+.consent a{color:var(--green);font-weight:600;border-bottom:1px solid var(--gold)}
+.field.error .consent{color:#A5644E}
+.legal{display:none}
+.legal:target{display:block;position:fixed;inset:0;z-index:120;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--cream)}
+.legal-in{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+.legal-back{position:sticky;top:12px;z-index:2;display:flex;width:max-content;align-items:center;padding:10px 18px;border-radius:999px;background:var(--cream);border:1px solid var(--gold-soft);font-size:14px;font-weight:600;color:var(--green);margin-bottom:28px;box-shadow:0 8px 20px -12px rgba(31,61,43,.35)}
+.legal h2{font-size:clamp(32px,4vw,44px);margin:12px 0 6px}
+.legal .legal-date{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+.legal h3{font-size:23px;margin:30px 0 10px}
+.legal p,.legal li{font-size:15.5px;color:var(--ink);margin-bottom:10px}
+.legal ul{padding-left:22px;margin-bottom:10px}
+.legal a:not(.btn){color:var(--green);font-weight:600;border-bottom:1px solid var(--gold)}
+.legal-close{margin-top:26px}
+footer .bottom a{color:rgba(250,246,238,.85);border-bottom:1px solid rgba(230,217,188,.4)}
+footer .bottom a:hover{color:var(--cream)}
 .success{position:absolute;inset:0;background:var(--beige);border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;opacity:0;pointer-events:none;transition:.4s}
 .success.show{opacity:1;pointer-events:auto}
 .success .icon{width:70px;height:70px;background:var(--green);color:var(--cream)}
@@ -891,8 +908,11 @@ footer .bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wra
             <select id="format" name="format"><option value="group">В группе</option><option value="individual">Индивидуально</option></select>
           </div>
         </div>
+        <div class="field" id="f-consent">
+          <label class="consent"><input type="checkbox" id="consent" name="consent"><span>Я согласна на обработку моих данных (или данных моего ребёнка) для ответа на заявку в соответствии с <a href="#privacy-policy">политикой конфиденциальности</a></span></label>
+          <div class="err">Пожалуйста, подтвердите согласие</div>
+        </div>
         <button class="btn btn-primary" type="submit">Отправить заявку</button>
-        <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
         <div class="success" id="success">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
           <h3>Джазакуми Ллаху хайран!</h3>
@@ -917,9 +937,62 @@ footer .bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wra
         <nav><a href="#courses">Направления</a><a href="#programs">Программы</a><a href="#prices">Стоимость</a><a href="#faq">Вопросы</a><a href="#enroll">Запись</a></nav>
       </div>
     </div>
-    <div class="bottom"><span>© 2026 Kanzul Ilm Online school</span><span>Обучение с любовью к Корану</span></div>
+    <div class="bottom"><span>© 2026 Kanzul Ilm Online school</span><a href="#privacy-policy">Политика конфиденциальности</a><span>Обучение с любовью к Корану</span></div>
   </div>
 </footer>
+
+<!-- PRIVACY POLICY (opens via #privacy-policy, works without scripts) -->
+<section class="legal" id="privacy-policy" aria-label="Политика конфиденциальности">
+  <div class="legal-in">
+    <a href="#!" class="legal-back" data-close-legal>← Вернуться на сайт</a>
+    <span class="eyebrow">Документы</span>
+    <h2>Политика конфиденциальности</h2>
+    <p class="legal-date">Действует с ноября 2026 года</p>
+
+    <p>Мы бережно относимся к вашим личным данным. Здесь простыми словами описано, какие данные обрабатываются при посещении сайта <b>kanzul-ilm.com</b>, зачем и какие у вас есть права. Политика составлена в соответствии с Общим регламентом ЕС о защите данных (GDPR / DSGVO).</p>
+
+    <h3>1. Кто отвечает за ваши данные</h3>
+    <p>Ответственная за обработку данных — владелица онлайн-школы Kanzul Ilm, Берлин, Германия. Полные контактные данные указаны в разделе Impressum. Связаться с нами по вопросам личных данных можно в Telegram: <a href="https://t.me/bint_abdurauf_k" target="_blank" rel="noopener">@bint_abdurauf_k</a>.</p>
+
+    <h3>2. Посещение сайта и хостинг</h3>
+    <p>Сайт размещён на сервисе GitHub Pages (GitHub, Inc., США). При открытии сайта сервер автоматически получает технические данные: IP-адрес, дату и время запроса, тип браузера и устройства. Это нужно, чтобы показать вам сайт и защитить его от атак (основание: ст. 6 (1) (f) GDPR — законный интерес в надёжной работе сайта). Мы сами эти данные не просматриваем и не храним.</p>
+    <p>GitHub может обрабатывать данные в США. Передача основана на решении ЕС о достаточности защиты — EU-U.S. Data Privacy Framework (ст. 45 GDPR).</p>
+
+    <h3>3. Форма записи</h3>
+    <p>Форма на сайте <b>не отправляет и не сохраняет</b> ваши данные: имя, контакт и выбранное направление остаются только в вашем браузере. После нажатия кнопки открывается наш Telegram, и вы сами решаете, что нам написать.</p>
+
+    <h3>4. Переписка в Telegram</h3>
+    <p>Когда вы пишете нам в Telegram, мы получаем ваше имя в Telegram и текст сообщений. Мы используем их, чтобы ответить на вопросы, подобрать направление и организовать занятия (основание: ст. 6 (1) (b) GDPR — подготовка и исполнение договора об обучении). Для самого мессенджера действует политика конфиденциальности Telegram.</p>
+    <p>Переписку и данные об обучении мы храним, пока идёт обучение, а затем — столько, сколько требует закон (например, налоговые правила), после чего удаляем.</p>
+
+    <h3>5. Помощница-бот на сайте</h3>
+    <p>Бот работает прямо в вашем браузере по готовым ответам. Ваши вопросы никуда не отправляются и не сохраняются.</p>
+
+    <h3>6. Cookies и аналитика</h3>
+    <p>Сайт не использует cookies, счётчики посещений и рекламные сервисы. Шрифты и изображения встроены в сам сайт и не загружаются со сторонних серверов.</p>
+
+    <h3>7. Данные детей</h3>
+    <p>Если вы записываете на занятия ребёнка младше 16 лет, данные о нём вы передаёте как его родитель или законный представитель и с вашего согласия.</p>
+
+    <h3>8. Ваши права</h3>
+    <p>Вы можете в любой момент:</p>
+    <ul>
+      <li>узнать, какие ваши данные у нас есть (ст. 15 GDPR);</li>
+      <li>исправить неточные данные (ст. 16);</li>
+      <li>потребовать удалить данные (ст. 17) или ограничить их обработку (ст. 18);</li>
+      <li>получить свои данные в удобном формате (ст. 20);</li>
+      <li>возразить против обработки на основании законного интереса (ст. 21);</li>
+      <li>отозвать данное согласие — это не влияет на законность обработки до отзыва (ст. 7 (3)).</li>
+    </ul>
+    <p>Для этого просто напишите нам в Telegram <a href="https://t.me/bint_abdurauf_k" target="_blank" rel="noopener">@bint_abdurauf_k</a>.</p>
+    <p>Вы также вправе подать жалобу в надзорный орган. Для нас это: <b>Berliner Beauftragte für Datenschutz und Informationsfreiheit</b>, Alt-Moabit 59–61, 10555 Berlin, datenschutz-berlin.de.</p>
+
+    <h3>9. Изменения</h3>
+    <p>Мы можем обновлять эту политику, если изменится работа сайта или законы. Актуальная версия всегда находится на этой странице.</p>
+
+    <a href="#!" class="btn btn-primary legal-close" data-close-legal>Вернуться на сайт</a>
+  </div>
+</section>
 
 <!-- BOT -->
 <div class="bot-hint" id="botHint">Ассаляму алейкум! Есть вопрос? Я помогу 🌿</div>
@@ -981,9 +1054,11 @@ footer .bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wra
     var b=check('f-contact',form.contact.value.trim().length>4);
     if(!a){form.name.focus();return}
     if(!b){form.contact.focus();return}
+    if(!check('f-consent',form.consent.checked)){form.consent.focus();return}
     window.open('https://t.me/bint_abdurauf_k','_blank');
     document.getElementById('success').classList.add('show');
   });
+  form.consent.addEventListener('change',function(){document.getElementById('f-consent').classList.remove('error')});
   ['name','contact'].forEach(function(n){form[n].addEventListener('input',function(){document.getElementById('f-'+n).classList.remove('error')})});
   document.getElementById('again').addEventListener('click',function(){
     form.reset();document.getElementById('success').classList.remove('show');
@@ -1052,11 +1127,9 @@ footer .bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wra
     e.preventDefault();var i=document.getElementById('botInput'),v=i.value.trim();if(!v)return;i.value='';ask(v);
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){toggle(false);menuToggle.checked=false}});
-  // auto-open the bot once per visit, unless the visitor already used it
-  var seen=false;try{seen=sessionStorage.getItem('botShown')==='1'}catch(e){}
-  if(!seen)setTimeout(function(){
-    if(!started&&!menuToggle.checked)toggle(true,true);
-    try{sessionStorage.setItem('botShown','1')}catch(e){}
+  // auto-open the bot shortly after the page loads (nothing is stored in the browser)
+  setTimeout(function(){
+    if(!started&&!menuToggle.checked&&location.hash!=='#privacy-policy')toggle(true,true);
   },2000);
 })();
 </script>
